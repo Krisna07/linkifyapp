@@ -8,11 +8,18 @@ import {
   FiFilter,
   FiGlobe,
   FiHome,
+  FiLink,
+  FiMail,
+  FiSend,
   FiSettings,
-  FiShare,
   FiShare2,
+  FiTrash2,
+  FiUserPlus,
 } from "react-icons/fi";
-import { FaLeaf, FaShare } from "react-icons/fa";
+import { FaLeaf } from "react-icons/fa";
+import { MdOutlineAddLink } from "react-icons/md";
+import { VscSignOut } from "react-icons/vsc";
+import { RiSettings5Fill, RiUserSettingsLine } from "react-icons/ri";
 interface MenuItem {
   title: string;
   path: string;
@@ -42,27 +49,41 @@ const Sidenav: React.FC<SidenavProps> = () => {
       icon: <FiShare2 />,
       submenu: [
         {
-          title: "All Sites",
-          path: "/sites",
+          title: "Received",
+          path: "/Links",
+          icon: <FiMail />,
         },
         {
-          title: "Create Site",
+          title: "Sent",
           path: "/create-site",
+          icon: <FiSend />,
+        },
+        {
+          title: "Requests",
+          path: "/create-site",
+          icon: <FiUserPlus />,
+        },
+        {
+          title: "Trash",
+          path: "/create-site",
+          icon: <FiTrash2 />,
         },
       ],
     },
     {
-      title: "Sites",
-      path: "/sites",
+      title: "Links",
+      path: "/Links",
       icon: <FiGlobe />,
       submenu: [
         {
-          title: "All Sites",
-          path: "/sites",
+          title: "All Links",
+          path: "/Links",
+          icon: <FiLink />,
         },
         {
-          title: "Create Site",
+          title: "Create Link",
           path: "/create-site",
+          icon: <MdOutlineAddLink />,
         },
       ],
     },
@@ -79,10 +100,12 @@ const Sidenav: React.FC<SidenavProps> = () => {
         {
           title: "Account Settings",
           path: "/account-settings",
+          icon: <RiUserSettingsLine />,
         },
         {
           title: "Site Settings",
           path: "/site-settings",
+          icon: <RiSettings5Fill />,
         },
       ],
     },
@@ -95,7 +118,7 @@ const Sidenav: React.FC<SidenavProps> = () => {
 
   return (
     <div className="flex h-screen">
-      <div className="w-64 bg-gray-900 text-white">
+      <div className="w-64 bg-gray-900 text-white relative">
         <div className="flex items-center justify-center h-16 border-b border-gray-800">
           <span className="text-xl font-semibold flex items-center gap-4">
             Linkify <FaLeaf />{" "}
@@ -107,7 +130,7 @@ const Sidenav: React.FC<SidenavProps> = () => {
               <div key={menuItem.path}>
                 <Link
                   href={""}
-                  className="flex items-center px-4 py-2 text-sm font-medium rounded-md hover:bg-gray-800"
+                  className="flex items-center px-4 py-2 text-sm font-medium rounded-md hover:bg-gray-800 transition-all"
                 >
                   {menuItem.icon}
                   <span className="ml-2">{menuItem.title}</span>
@@ -125,14 +148,14 @@ const Sidenav: React.FC<SidenavProps> = () => {
                   )}
                 </Link>
                 {menuItem.submenu && openSubmenu === menuItem.path && (
-                  <div className="ml-8">
+                  <div className="ml-8 transition-all">
                     {menuItem.submenu.map((submenuItem) => (
                       <Link
                         key={submenuItem.path}
                         href={""}
-                        className="block px-4 py-2 text-sm rounded-md hover:bg-gray-800"
+                        className="block px-4 py-2 text-sm rounded-md hover:bg-gray-800 flex items-center gap-2"
                       >
-                        {submenuItem.title}
+                        {submenuItem.icon} {submenuItem.title}
                       </Link>
                     ))}
                   </div>
@@ -141,6 +164,9 @@ const Sidenav: React.FC<SidenavProps> = () => {
             ))}
           </div>
         </nav>
+        <div className="px-2 w-full items-center flex gap-2 absolute bottom-0 px-8 py-4 bg-gray-800">
+          <VscSignOut /> Sign out
+        </div>
       </div>
       <div className="flex-1 bg-gray-100"></div>
     </div>
