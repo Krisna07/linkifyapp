@@ -25,3 +25,7 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.sideMenu:nth-child(2) {
+  color: red;
+}

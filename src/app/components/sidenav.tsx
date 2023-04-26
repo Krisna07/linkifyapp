@@ -7,6 +7,7 @@ import {
   FiChevronUp,
   FiFilter,
   FiGlobe,
+  FiHeart,
   FiHome,
   FiLink,
   FiMail,
@@ -16,10 +17,21 @@ import {
   FiTrash2,
   FiUserPlus,
 } from "react-icons/fi";
-import { FaLeaf } from "react-icons/fa";
+import {
+  FaFileContract,
+  FaLeaf,
+  FaSubscript,
+  FaUser,
+  FaUserCheck,
+} from "react-icons/fa";
 import { MdOutlineAddLink } from "react-icons/md";
-import { VscSignOut } from "react-icons/vsc";
-import { RiSettings5Fill, RiUserSettingsLine } from "react-icons/ri";
+import { VscAccount, VscSignOut } from "react-icons/vsc";
+import {
+  RiFilter2Line,
+  RiFilterLine,
+  RiSettings5Fill,
+  RiUserSettingsLine,
+} from "react-icons/ri";
 interface MenuItem {
   title: string;
   path: string;
@@ -81,6 +93,11 @@ const Sidenav: React.FC<SidenavProps> = () => {
           icon: <FiLink />,
         },
         {
+          title: "Favourites",
+          path: "/Links",
+          icon: <FiHeart />,
+        },
+        {
           title: "Create Link",
           path: "/create-site",
           icon: <MdOutlineAddLink />,
@@ -88,7 +105,7 @@ const Sidenav: React.FC<SidenavProps> = () => {
       ],
     },
     {
-      title: "Deployments",
+      title: "Analytics",
       path: "/deployments",
       icon: <FiFilter />,
     },
@@ -109,6 +126,26 @@ const Sidenav: React.FC<SidenavProps> = () => {
         },
       ],
     },
+    {
+      title: "Catagories",
+      path: "/catac",
+      icon: <FaFileContract />,
+    },
+    {
+      title: "User",
+      path: "/catac",
+      icon: <FaUser />,
+      submenu: [
+        {
+          title: "User Details",
+          icon: <FaUserCheck />,
+        },
+        {
+          title: "Subscription",
+          icon: <VscAccount />,
+        },
+      ],
+    },
   ];
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
 
@@ -125,7 +162,7 @@ const Sidenav: React.FC<SidenavProps> = () => {
           </span>
         </div>
         <nav className="mt-8">
-          <div className="px-2">
+          <div className="px-2 sideMenu">
             {menuItems.map((menuItem) => (
               <div key={menuItem.path}>
                 <Link
