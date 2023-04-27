@@ -1,5 +1,7 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
+import Sidenav from "./components/sidenav";
+import Navbar from "./components/pagenav";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,7 +17,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div className="grid grid-cols-6 grid-rows-[auto, auto ] gap-0 h-screen box-border">
+          <div className="col-span-1 bg-gray-800">
+            <Sidenav menuItems={[]} />
+          </div>
+
+          <main className="col-span-5 w-full flex flex-col bg-gray-500 ">
+            <Navbar />
+            <div className="p-4 box-border"> {children}</div>
+          </main>
+        </div>
+      </body>
     </html>
   );
 }

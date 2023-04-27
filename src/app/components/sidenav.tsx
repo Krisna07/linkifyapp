@@ -57,7 +57,7 @@ const Sidenav: React.FC<SidenavProps> = () => {
     },
     {
       title: "Shares",
-      path: "/dashboard",
+      path: "/shares",
       icon: <FiShare2 />,
       submenu: [
         {
@@ -128,7 +128,7 @@ const Sidenav: React.FC<SidenavProps> = () => {
     },
     {
       title: "Catagories",
-      path: "/catac",
+      path: "/gggge",
       icon: <FaFileContract />,
     },
     {
@@ -166,7 +166,7 @@ const Sidenav: React.FC<SidenavProps> = () => {
             {menuItems.map((menuItem) => (
               <div key={menuItem.path}>
                 <Link
-                  href={""}
+                  href={menuItem.path}
                   className="flex items-center px-4 py-2 text-sm font-medium rounded-md hover:bg-gray-800 transition-all"
                 >
                   {menuItem.icon}
@@ -188,7 +188,7 @@ const Sidenav: React.FC<SidenavProps> = () => {
                   <div className="ml-8 transition-all">
                     {menuItem.submenu.map((submenuItem) => (
                       <Link
-                        key={submenuItem.path}
+                        key={submenuItem.title}
                         href={""}
                         className="block px-4 py-2 text-sm rounded-md hover:bg-gray-800 flex items-center gap-2"
                       >
@@ -196,6 +196,9 @@ const Sidenav: React.FC<SidenavProps> = () => {
                       </Link>
                     ))}
                   </div>
+                )}
+                {menuItems.indexOf(menuItem) === 4 && (
+                  <div className="border-t border-gray-800 my-2"></div>
                 )}
               </div>
             ))}

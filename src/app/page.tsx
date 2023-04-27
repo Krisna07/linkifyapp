@@ -5,9 +5,5 @@ import Sidenav from "./components/sidenav";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  return (
-    <main>
-      <Sidenav />
-    </main>
-  );
+  return <main></main>;
 }
