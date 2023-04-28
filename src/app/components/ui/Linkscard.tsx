@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { FaChevronCircleRight, FaChevronRight, FaCommentDots, FaDotCircle } from "react-icons/fa";
 import { IoIosLink } from "react-icons/io";
 import { RiShareBoxLine } from "react-icons/ri";
 import Button from "./Button";
@@ -66,17 +67,11 @@ export const Card: React.FC<CardProps> = ({ link }) => {
                   {people.username}
                 </div>
                 {people.LinkShared
-                  ? people.LinkShared.splice(0, 3).map((shared) => (
-                      <span
-                        key={shared.id}
-                        className="text-lg bg-gray-400 rounded-full p-2 absolute"
-                        style={{
-                          right: `${people.LinkShared.indexOf(shared) * 20}px`,
-                        }}
-                      >
-                        {shared.sharedApp}
-                      </span>
-                    ))
+                  ? 
+                       
+                <span className="flex items-center gap-2"> {people.LinkShared.length}<FaChevronRight /></span>
+                
+                    
                   : ""}
               </li>
             ))
