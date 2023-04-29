@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { Card } from "../components/ui/Linkscard";
 import {
@@ -15,7 +16,7 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import { MdAddLink } from "react-icons/md";
-import LineChart from '../components/chart';
+import LineChart from "../components/chart";
 
 const links = [
   {
@@ -130,22 +131,22 @@ const links = [
 
 export default function Dashboard() {
   const data = [10, 5, 8, 3, 10, 6];
-const labels = ['Site A', 'Site B', 'Site C', 'Site D', 'Site E', 'Site F'];
+  const labels = ["Site A", "Site B", "Site C", "Site D", "Site E", "Site F"];
 
   return (
- <div className="w-full flex flex-col gap-8">
+    <div className="w-full flex flex-col gap-8">
       <div className="w-full flex  flex-col items-start p-4 gap-4 box-border">
-         <div className="w-full grid grid-cols-3 gap-4 box-border">
+        <div className="w-full grid grid-cols-3 gap-4 box-border">
           {links.map((link) => (
             <div key={link.id}>
               <Card link={link} />
             </div>
           ))}
         </div>
-       <div >  
-        <LineChart data={data} labels={labels} />
+        <div>
+          <LineChart data={data} labels={labels} />
+        </div>
       </div>
     </div>
-</div>
   );
 }
