@@ -154,8 +154,8 @@ const Sidenav: React.FC<SidenavProps> = () => {
   };
 
   return (
-    <div className="flex h-screen">
-      <div className="w-64 bg-gray-900 text-white relative">
+    <div className="w-full flex h-screen overflow-hidden ">
+      <div className="w-full bg-gray-900 text-white relative">
         <div className="flex items-center justify-center h-16 border-b border-gray-800">
           <span className="text-xl font-semibold flex items-center gap-4">
             Linkify <FaLeaf />{" "}
@@ -165,12 +165,12 @@ const Sidenav: React.FC<SidenavProps> = () => {
           <div className="px-2 sideMenu">
             {menuItems.map((menuItem) => (
               <div key={menuItem.path}>
-                <Link
-                  href={menuItem.path}
-                  className="flex items-center px-4 py-2 text-sm font-medium rounded-md hover:bg-gray-800 transition-all"
+                <div
+                  
+                  className="flex gap-2 items-center px-4 py-2 text-sm font-medium rounded-md hover:bg-gray-800 transition-all"
                 >
                   {menuItem.icon}
-                  <span className="ml-2">{menuItem.title}</span>
+                  {menuItem.path ? <Link href={menuItem.path}>{menuItem.title}</Link>:<span className="ml-2">{menuItem.title}</span>}
                   {menuItem.submenu && (
                     <div
                       className="ml-auto"
@@ -183,7 +183,7 @@ const Sidenav: React.FC<SidenavProps> = () => {
                       )}
                     </div>
                   )}
-                </Link>
+                </div>
                 {menuItem.submenu && openSubmenu === menuItem.path && (
                   <div className="ml-8 transition-all">
                     {menuItem.submenu.map((submenuItem) => (

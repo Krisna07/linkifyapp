@@ -129,24 +129,23 @@ const links = [
 ];
 
 export default function Dashboard() {
-  const data = [10, 5, 8, 3, 12, 6];
+  const data = [10, 5, 8, 3, 10, 6];
 const labels = ['Site A', 'Site B', 'Site C', 'Site D', 'Site E', 'Site F'];
 
   return (
-    <div className="w-full flex flex-col gap-8">
-      <div className="w-full flex  items-center">
-        <div className="w-full grid grid-cols-3 gap-4 box-border">
+ <div className="w-full flex flex-col gap-8">
+      <div className="w-full flex  flex-col items-start p-4 gap-4 box-border">
+         <div className="w-full grid grid-cols-3 gap-4 box-border">
           {links.map((link) => (
             <div key={link.id}>
               <Card link={link} />
             </div>
           ))}
         </div>
-        <div className="p-4">
-    <h1 className="text-2xl font-bold mb-4">Site Visits</h1>
-    <LineChart data={data} labels={labels} />
-  </div>
+       <div >  
+        <LineChart data={data} labels={labels} />
       </div>
     </div>
+</div>
   );
 }

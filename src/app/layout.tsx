@@ -17,13 +17,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <div className="w-full flex   h-screen box-border">
-          <div className="min-w-1/6 bg-gray-800">
+      <body className={`${inter.className}`  } >
+        <div className="w-full flex   h-screen box-border overflow-hidden">
+          <div className="w-1/6 bg-gray-800 sticky">
             <Sidenav menuItems={[]} />
           </div>
 
-          <main className="w-5/6 flex flex-col ">
+          <main className="w-5/6 flex flex-col overflow-y-scroll ">
             <Navbar />
             <div className="p-4 box-border"> {children}</div>
           </main>

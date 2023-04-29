@@ -30,17 +30,17 @@ interface CardProps {
 
 export const Card: React.FC<CardProps> = ({ link }) => {
   return (
-    <div className="bg-white rounded-md p-4 shadow-lg grid gap-2 text-black">
+    <div className="bg-white rounded-md box-border  shadow-lg p-4 grid gap-2 text-black">
       <div className="flex items-center text-black">
         <div className="bg-gray-200 p-2 rounded-full">{link.icon}</div>
         <h3 className="ml-4 text-lg font-medium ">{link.title}</h3>
       </div>
-      <ul>
+      <ul className="w-full box-border">
         {link.urls
           ? link.urls.slice(0, 4).map((url) => (
               <li
                 key={url.url}
-                className=" relative text-black font-[600] w-full flex items-center gap-2 bg-gray-200 hover:bg-gray-300 m-2 px-4 py-2 box-border rounded"
+                className=" relative text-black font-[600] w-full flex items-center gap-2 bg-gray-200 hover:bg-gray-300 my-2 px-4 py-2 box-border rounded"
               >
                 {url.icon}
                 <Link href={url.url}>{url.title}</Link>
@@ -53,7 +53,7 @@ export const Card: React.FC<CardProps> = ({ link }) => {
               <li
                 key={people.username}
                 className={
-                  "relative text-black font-[600] w-full flex justify-between items-center gap-2 bg-gray-200 hover:bg-gray-300 m-2 px-4 py-2 box-border rounded"
+                  "relative text-black font-[600] w-full flex justify-between items-center gap-2 bg-gray-200 hover:bg-gray-300 my-2 px-4 py-2 box-border rounded"
                 }
               >
                 <div className="flex items-center gap-2">
