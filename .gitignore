@@ -33,5 +33,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
 #db 
-/src/lib/db.tsx
+/src/lib/db.ts
