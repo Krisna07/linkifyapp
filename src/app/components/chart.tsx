@@ -54,7 +54,7 @@ const LineChart = ({ data, labels }: ChartProps) => {
     <div className="relative  rounded w-full flex flex-col gap-2" style={{ height: 300 }}>
        <h1 className="text-2xl font-bold">Site insights</h1>
       <canvas ref={canvasRef} className="bg-white inset-0 w-full h-full rounded" />
-      <Button children={"View full insights"} variant={'primary'} icon={ <FaChevronRight/>} hovericon={<FaArrowRight/>} />
+      <Button children={"View full insights"} variant={'primary'} icon={<FaChevronRight />} hovericon={<FaArrowRight />} href={'/analytics' } />
     </div>
   );
 };

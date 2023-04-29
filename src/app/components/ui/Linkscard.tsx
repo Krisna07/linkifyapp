@@ -1,8 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { FaChevronCircleRight, FaChevronRight, FaCommentDots, FaDotCircle } from "react-icons/fa";
-import { IoIosLink } from "react-icons/io";
+import { useState } from "react";
+import { FaChevronRight } from "react-icons/fa";
 import { RiShareBoxLine } from "react-icons/ri";
 import Button from "./Button";
 
@@ -27,6 +26,60 @@ interface CardProps {
     }[];
   };
 }
+interface peoples {
+  username: string;
+  LinkShared: {
+    name: string;
+    id: number;
+    sharedApp: JSX.Element;
+  }[];
+}
+
+const SharedLinks = ({ item }: peoples) => {
+  const [icons, showIcons] = useState<boolean>(false);
+
+  return (
+    <li
+      key={item.username}
+      className={
+        "relative text-black font-[600] w-full lg:flex justify-between items-center gap-2 bg-gray-200 hover:bg-gray-300 my-2 px-4 py-2 box-border rounded"
+      }
+    >
+      <div className="flex items-center gap-2">
+        <img
+          src={item.imageLink}
+          alt="userimage"
+          width={40}
+          height={40}
+          className="rounded-full"
+        />
+        {item.username}
+      </div>
+      {item.LinkShared ? (
+        <span
+          className="max-w-1/2 relative flex items-center justify-end gap-2"
+          onClick={() => showIcons(!icons)}
+        >
+          {!icons ? item.LinkShared.length : ""}
+          {icons
+            ? item.LinkShared.map((social) => (
+                <span key={social.id} className="text-xl">
+                  {social.sharedApp}
+                </span>
+              ))
+            : ""}
+          <FaChevronRight
+            className={` transition-all ${
+              icons ? "absolute right-20" : "relative right-0"
+            }`}
+          />
+        </span>
+      ) : (
+        ""
+      )}
+    </li>
+  );
+};
 
 export const Card: React.FC<CardProps> = ({ link }) => {
   return (
@@ -49,32 +102,9 @@ export const Card: React.FC<CardProps> = ({ link }) => {
             ))
           : ""}
         {link.peoples
-          ? link.peoples.slice(0, 3).map((people) => (
-              <li
-                key={people.username}
-                className={
-                  "relative text-black font-[600] w-full flex justify-between items-center gap-2 bg-gray-200 hover:bg-gray-300 my-2 px-4 py-2 box-border rounded"
-                }
-              >
-                <div className="flex items-center gap-2">
-                  <img
-                    src={people.imageLink}
-                    alt="userimage"
-                    width={40}
-                    height={40}
-                    className="rounded-full"
-                  />
-                  {people.username}
-                </div>
-                {people.LinkShared
-                  ? 
-                       
-                <span className="flex items-center gap-2"> {people.LinkShared.length}<FaChevronRight /></span>
-                
-                    
-                  : ""}
-              </li>
-            ))
+          ? link.peoples
+              .slice(0, 3)
+              .map((people) => <SharedLinks item={people} />)
           : ""}
       </ul>
 

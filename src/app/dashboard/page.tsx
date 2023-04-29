@@ -17,6 +17,7 @@ import {
 } from "react-icons/fa";
 import { MdAddLink } from "react-icons/md";
 import LineChart from "../components/chart";
+import { db } from "@/lib/db";
 
 const links = [
   {
@@ -129,7 +130,8 @@ const links = [
   },
 ];
 
-export default function Dashboard() {
+export default async function Dashboard() {
+  await db.set("hello", "hello");
   const data = [10, 5, 8, 3, 10, 6];
   const labels = ["Site A", "Site B", "Site C", "Site D", "Site E", "Site F"];
 

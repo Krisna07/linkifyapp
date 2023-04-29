@@ -1,11 +1,12 @@
-'use client'
+"use client";
 import React, { useState } from "react";
 import { IconType } from "react-icons";
 import { ButtonHTMLAttributes } from "react";
 import cx from "classnames";
+import { useRouter } from "next/navigation";
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: "primary" | "secondary" | 'icontype' ;
+  variant?: "primary" | "secondary" | "icontype";
   icon?: IconType;
   href?: LinkStyle;
   hovericon?: IconType;
@@ -15,6 +16,7 @@ const Button: React.FC<ButtonProps> = ({
   variant = "primary",
   icon,
   children,
+  href,
   hovericon,
   ...props
 }) => {
@@ -27,16 +29,20 @@ const Button: React.FC<ButtonProps> = ({
       "text-gray-600 hover:bg-gray-100": variant === "icontype",
     }
   );
-  const [btnIcon, setIcon] = useState(icon)
-
+  const [btnIcon, setIcon] = useState(icon);
+  const router = useRouter();
   return (
-    <button className={buttonClassNames} {...props} onMouseOver={() => {
-      hovericon ? setIcon(hovericon) : "";
-    
-    }} onMouseLeave={() => setIcon(icon)} >
-    
+    <button
+      className={buttonClassNames}
+      {...props}
+      onMouseOver={() => {
+        hovericon ? setIcon(hovericon) : "";
+      }}
+      onMouseLeave={() => setIcon(icon)}
+      onClick={() => (href ? router.push(href) : "")}
+    >
       {children}
-      {btnIcon?btnIcon:""}
+      {btnIcon ? btnIcon : ""}
     </button>
   );
 };
