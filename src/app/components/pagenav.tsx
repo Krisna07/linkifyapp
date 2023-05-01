@@ -33,8 +33,8 @@ const Navbar: React.FC = () => {
           {active ? "Active" : "Inactive"}
           <div className="py-[2px]  px-2 bg-gray-400 rounded-full  relative">
             <div
-              className={`bg-green-800 w-2 h-2 rounded-full relative ${
-                active ? "-right-[95%]" : "-left-[95%]"
+              className={` w-2 h-2 rounded-full relative ${
+                active ? "-right-[95%] bg-green-800" : "-left-[95%] bg-gray-600"
               } transition-all`}
             ></div>
           </div>
