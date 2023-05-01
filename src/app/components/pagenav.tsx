@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 
 import { FaUserCircle, FaCog } from "react-icons/fa";
 import Button from "./ui/Button";
@@ -11,6 +13,7 @@ import { RiFilter3Line } from "react-icons/ri";
 // }
 
 const Navbar: React.FC = () => {
+  const [active, setActive] = useState(false);
   return (
     <nav className="flex justify-between items-center py-4 px-6 bg-gray-800">
       <div className="w-2/4 flex justify-center items-center relative">
@@ -23,8 +26,18 @@ const Navbar: React.FC = () => {
         <RiFilter3Line size={18} className="absolute right-2 text-bold" />
       </div>
       <div className="flex items-center gap-4">
-        <div className="flex items-center text-sm  rounded-full border-2 border-gray-500 gap-2 px-4 py-[4px] hover:bg-white hover:text-black font-[600]">
-          Active <div className="bg-green-800 w-2 h-2 rounded-full"></div>
+        <div
+          className="flex items-center text-sm  rounded-full border-2 border-gray-500 gap-2 px-4 py-[4px] hover:bg-white hover:text-black font-[600]"
+          onClick={() => setActive(!active)}
+        >
+          {active ? "Active" : "Inactive"}
+          <div className="py-[2px]  px-2 bg-gray-400 rounded-full  relative">
+            <div
+              className={`bg-green-800 w-2 h-2 rounded-full relative ${
+                active ? "-right-[95%]" : "-left-[95%]"
+              } transition-all`}
+            ></div>
+          </div>
         </div>
         <Button variant="icon">
           <FaUserCircle size={24} />
