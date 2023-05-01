@@ -28,7 +28,10 @@ const Navbar: React.FC = () => {
       <div className="flex items-center gap-4">
         <div
           className="flex items-center text-sm  rounded-full border-2 border-gray-500 gap-2 px-4 py-[4px] hover:bg-white hover:text-black font-[600]"
-          onClick={() => setActive(!active)}
+          onClick={() => {
+            setActive(!active);
+            console.log(active);
+          }}
         >
           {active ? "Active" : "Inactive"}
           <div className="py-[2px]  px-2 bg-gray-400 rounded-full  relative">

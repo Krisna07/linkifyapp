@@ -131,7 +131,6 @@ const links = [
 ];
 
 export default async function Dashboard() {
-  console.log(process.env);
   await db.set("hello", "hello");
   const data = [10, 5, 8, 3, 10, 6];
   const labels = ["Site A", "Site B", "Site C", "Site D", "Site E", "Site F"];
