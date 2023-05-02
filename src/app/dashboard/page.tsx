@@ -145,9 +145,7 @@ export default async function Dashboard() {
             </div>
           ))}
         </div>
-        <div>
-          <LineChart data={data} labels={labels} />
-        </div>
+        <div>{/* <LineChart data={data} labels={labels} /> */}</div>
       </div>
     </div>
   );
