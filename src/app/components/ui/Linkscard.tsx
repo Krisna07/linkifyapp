@@ -35,7 +35,7 @@ interface peoples {
   }[];
 }
 
-const SharedLinks = ({ item }: peoples) => {
+const SharedLinks = ({ item }: any) => {
   const [icons, showIcons] = useState<boolean>(false);
 
   return (
@@ -62,7 +62,7 @@ const SharedLinks = ({ item }: peoples) => {
         >
           {!icons ? item.LinkShared.length : ""}
           {icons
-            ? item.LinkShared.map((social) => (
+            ? item.LinkShared.map((social: any) => (
                 <span key={social.id} className="text-xl">
                   {social.sharedApp}
                 </span>

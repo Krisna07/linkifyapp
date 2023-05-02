@@ -7,9 +7,9 @@ import { useRouter } from "next/navigation";
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: "primary" | "secondary" | "icontype";
-  icon?: IconType;
-  href?: LinkStyle;
-  hovericon?: IconType;
+  icon?: any;
+  href?: string;
+  hovericon?: any;
 };
 
 const Button: React.FC<ButtonProps> = ({
